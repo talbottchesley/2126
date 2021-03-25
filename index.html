@@ -15,7 +15,7 @@
 <link rel="mask-icon" type="" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
 
 
-  <title>CodePen - 2125FINAl</title>
+  <title>CodePen - 2126-3</title>
   
   
   
@@ -40,10 +40,15 @@
 </div>
 <canvas id="myCanvas" width="600" height="300"></canvas>
 <img src="#"/>
+
+<audio controls id="baah">
+  <source src="https://math.seattleacademy.org/garyanderson/snd/sheep_baah.wav" type="audio/wav"
+          </audio>
   
   
       <script id="rendered-js" >
 console.clear();
+const baahsnd = document.getElementById("baah");
 let timer = 0;
 const c = document.getElementById("myCanvas");
 const ctx = c.getContext("2d");
@@ -128,6 +133,7 @@ function checkCollide() {
         (bots[i].x - bots[j].x) ** 2 + (bots[i].y - bots[j].y) ** 2
       );
       if (d <= bots[i].r + bots[j].r) {
+        baahsnd.play();
         if (bots[i].r < bots[j].r) {
           bots[j].r = Math.sqrt(bots[i].r ** 2 + bots[j].r ** 2);
           bots[i].r = 0;
@@ -156,11 +162,11 @@ function dokeydown(e) {
   }
 
   if (e.key == "a") {
-    bots[0].dx = bots[0].dx + stepSize;
+    bots[0].dx = bots[0].dx - stepSize;
   }
 
   if (e.key == "d") {
-    bots[0].dx = bots[0].dx - stepSize;
+    bots[0].dx = bots[0].dx + stepSize;
   }
 
   if (e.key == "s") {
